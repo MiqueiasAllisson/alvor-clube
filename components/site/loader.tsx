@@ -47,7 +47,7 @@ export function Loader() {
       atual += (alvo - atual) * (alvo === 100 ? 0.14 : 0.08);
       const pct = Math.min(100, Math.round(atual));
       el.style.setProperty("--pct", String(pct));
-      for (let k = 1; k <= 4; k++) el.classList.toggle(`p${k}`, pct >= k * 25 - 1);
+      for (let k = 1; k <= 4; k++) el.classList.toggle(`p${k}`, pct >= k * 25);
       if (pct >= 100 && t >= MINIMO && !saiu) {
         saiu = true;
         el.classList.add("is-lift");
@@ -55,8 +55,8 @@ export function Loader() {
           window.setTimeout(() => {
             raiz.style.overflow = "";
             setFase("saindo");
-          }, 400),
-          window.setTimeout(() => setFase("fim"), 1200),
+          }, 250),
+          window.setTimeout(() => setFase("fim"), 1000),
         );
         return;
       }
