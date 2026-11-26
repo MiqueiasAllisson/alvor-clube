@@ -1,4 +1,5 @@
 import { Nav } from "@/components/site/nav";
+import { Loader } from "@/components/site/loader";
 import { Hero } from "@/components/site/hero";
 import { Modalidades } from "@/components/site/modalidades";
 import { Horarios } from "@/components/site/horarios";
@@ -15,6 +16,7 @@ export default function Home() {
       <a className="sr-only" href="#modalidades">
         Pular para o conteúdo
       </a>
+      <Loader />
       <Nav />
       <main id="topo">
         <Hero />

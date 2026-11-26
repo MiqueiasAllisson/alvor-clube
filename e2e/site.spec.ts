@@ -8,6 +8,7 @@ test.describe("Alvor Clube", () => {
     page.on("console", (m: ConsoleMessage) => m.type() === "error" && erros.push(m.text()));
     page.on("pageerror", (e) => erros.push(e.message));
     await page.goto("./");
+    await page.locator(".loader").waitFor({ state: "detached", timeout: 10000 });
   });
 
   test("carrega sem erros no console e sem rolagem horizontal", async ({ page }) => {
@@ -88,6 +89,14 @@ test.describe("Alvor Clube", () => {
     await expect(page.locator("#menu-cel")).toBeVisible();
     await page.locator("#menu-cel").getByRole("link", { name: "Planos" }).click();
     await expect(page.getByRole("button", { name: "Abrir menu" })).toHaveAttribute("aria-expanded", "false");
+  });
+
+  test("tela de carregamento aparece e some sozinha", async ({ page }) => {
+    await page.goto("./");
+    await expect(page.locator(".loader")).toBeVisible();
+    await expect(page.locator(".ld-sub")).toHaveText("Clube · Moinhos de Vento");
+    await page.locator(".loader").waitFor({ state: "detached", timeout: 10000 });
+    expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe("");
   });
 
   test("captura da página para comparação", async ({ page }, info) => {
