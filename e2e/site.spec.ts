@@ -25,8 +25,14 @@ test.describe("Alvor Clube", () => {
   });
 
   test("todas as imagens e o vídeo carregam", async ({ page }) => {
-    await page.evaluate(() => document.querySelectorAll("img").forEach((i) => (i.loading = "eager")));
-    await page.waitForLoadState("networkidle");
+    await page.evaluate(() =>
+      Promise.all(
+        [...document.querySelectorAll("img")].map((i) => {
+          i.loading = "eager";
+          return i.decode().catch(() => undefined);
+        }),
+      ),
+    );
     const quebradas = await page.evaluate(() =>
       [...document.querySelectorAll("img")].filter((i) => !i.complete || i.naturalWidth === 0).map((i) => i.src),
     );
@@ -94,7 +100,8 @@ test.describe("Alvor Clube", () => {
   test("tela de carregamento aparece e some sozinha", async ({ page }) => {
     await page.goto("./");
     await expect(page.locator(".loader")).toBeVisible();
-    await expect(page.locator(".ld-sub")).toHaveText("Clube · Moinhos de Vento");
+    await expect(page.locator(".ld-svg")).toBeVisible();
+    await expect(page.locator(".ld-brand")).toContainText("Alvor");
     await page.locator(".loader").waitFor({ state: "detached", timeout: 10000 });
     expect(await page.evaluate(() => document.documentElement.style.overflow)).toBe("");
   });
