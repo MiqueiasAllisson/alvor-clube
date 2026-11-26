@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const MINIMO = 1900;
-const RAMPA = 1700;
+const MINIMO = 1350;
+const RAMPA = 1150;
 const MAXIMO = 6000;
 
 export function Loader() {
@@ -43,7 +43,7 @@ export function Loader() {
 
     const passo = (agora: number) => {
       const t = agora - inicio;
-      const alvo = Math.min(pronto || t > MAXIMO ? 100 : 90 * (1 - Math.exp(-t / 1400)), (t / RAMPA) * 100);
+      const alvo = Math.min(pronto || t > MAXIMO ? 100 : 90 * (1 - Math.exp(-t / 1000)), (t / RAMPA) * 100);
       atual += (alvo - atual) * (alvo === 100 ? 0.14 : 0.08);
       const pct = Math.min(100, Math.round(atual));
       el.style.setProperty("--pct", String(pct));
@@ -55,8 +55,8 @@ export function Loader() {
           window.setTimeout(() => {
             raiz.style.overflow = "";
             setFase("saindo");
-          }, 520),
-          window.setTimeout(() => setFase("fim"), 1400),
+          }, 400),
+          window.setTimeout(() => setFase("fim"), 1200),
         );
         return;
       }
