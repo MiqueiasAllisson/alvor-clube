@@ -9,6 +9,15 @@
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+::-webkit-scrollbar { width: 14px; height: 14px; }
+::-webkit-scrollbar-track { background: #FFFFFF; border-left: 1px solid rgba(23, 23, 28, .1); }
+::-webkit-scrollbar-thumb { background: #17171C; border-radius: 999px; border: 4px solid #FFFFFF; min-height: 64px; }
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active { background: #2B50FF; }
+::-webkit-scrollbar-corner { background: #FFFFFF; }
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-color: #17171C #FFFFFF; scrollbar-width: thin; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body{margin:0}
