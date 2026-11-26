@@ -51,10 +51,6 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="foot-base">
-          <p>© 2026 Alvor Clube. Academia fictícia: preços e horários deste site são supostos.</p>
-          <p>Vídeo: Dishant Babariya (Pexels). Fotos: Aaron Brogden (Unsplash) e demais a creditar.</p>
-        </div>
       </div>
     </footer>
   );
