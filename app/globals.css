@@ -306,23 +306,39 @@ body{margin:0}
 @property --pct{syntax:'<integer>';inherits:true;initial-value:0}
 .alv .loader{--pct:0;position:fixed;inset:0;z-index:100;background:var(--a);color:var(--l);display:flex;align-items:center;justify-content:center;clip-path:inset(0 0 0 0);transition:clip-path 800ms var(--prem);animation:ldFailsafe 0s linear 8s forwards}
 .alv .loader.is-out{clip-path:inset(0 0 100% 0);pointer-events:none}
-.alv .loader.is-out .ld-center{transform:translateY(-40px);opacity:0}
-.alv .ld-center{display:flex;flex-direction:column;align-items:center;gap:18px;transition:transform 700ms var(--prem),opacity 500ms var(--prem)}
-.alv .ld-logo{display:flex;align-items:center;gap:.14em;margin:0;max-width:none;font:700 clamp(88px,12vw,184px)/.9 'Barlow Condensed',sans-serif;letter-spacing:-.02em}
-.alv .ld-dot{flex:none;width:.17em;height:.17em;border-radius:50%;background:var(--x);transform:scale(0);animation:ldDot 600ms var(--out) 60ms forwards,ldPulse 1.4s var(--prem) 900ms infinite alternate}
-.alv .ld-word{display:inline-flex;overflow:hidden;padding:0 .02em .08em}
-.alv .ld-word span{display:inline-block;transform:translateY(110%);animation:ldUp 700ms var(--out) forwards}
-.alv .ld-sub{margin:0;max-width:none;font:700 19px/1 'Barlow',sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:ldFade 600ms var(--prem) 520ms forwards}
+.alv .ld-center{display:flex;flex-direction:column;align-items:center;transition:transform 700ms var(--prem),opacity 500ms var(--prem)}
+.alv .loader.is-out .ld-center{transform:translateY(-60px);opacity:0}
+.alv .ld-svg{width:clamp(320px,52vw,720px);height:auto;overflow:visible;display:block}
+.alv .ld-svg .bb-bar,.alv .ld-svg .bb-sl{fill:var(--l)}
+.alv .ld-svg .bb-col{fill:var(--l)}
+.alv .ld-svg .bb-knurl{fill:var(--a);opacity:.35}
+.alv .ld-svg .c-x{fill:var(--x)}
+.alv .ld-svg .c-l{fill:var(--l)}
+.alv .ld-svg .ld-shadow{fill:rgba(var(--l-rgb),.12);transform-box:fill-box;transform-origin:center}
+.alv .ld-svg .ld-bb{transform-box:fill-box;transform-origin:center}
+.alv .ld-svg .pl{transform-box:fill-box;transform-origin:center;opacity:0;transition:transform 520ms cubic-bezier(.34,1.45,.64,1),opacity 260ms var(--prem)}
+.alv .ld-svg .pl-l{transform:translateX(-46px) scaleY(.7)}
+.alv .ld-svg .pl-r{transform:translateX(46px) scaleY(.7)}
+.alv .ld-brand{position:absolute;display:inline-flex;align-items:center;gap:10px;font:700 30px/1 'Barlow Condensed',sans-serif;letter-spacing:-.01em;color:var(--l)}
+.alv .ld-brand::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--x)}
+.alv .ld-brand small{font:600 17px/1 'Barlow',sans-serif}
+.alv .ld-label{font:700 19px/1 'Barlow',sans-serif;margin-bottom:6px;white-space:nowrap}
+.alv .ld-svg .ld-bb{animation:ldRep 1.5s cubic-bezier(.45,0,.25,1) infinite}
+.alv .ld-svg .ld-shadow{animation:ldShadow 1.5s cubic-bezier(.45,0,.25,1) infinite}
+.alv .loader.p1 .pl-1,.alv .loader.p2 .pl-2,.alv .loader.p3 .pl-3,.alv .loader.p4 .pl-4{opacity:1;transform:none}
+.alv .loader.is-lift .ld-bb{animation:ldLift 520ms cubic-bezier(.3,0,.2,1) forwards}
+.alv .loader.is-lift .ld-shadow{animation:ldShadowLift 520ms cubic-bezier(.3,0,.2,1) forwards}
+.alv .ld-brand{top:clamp(22px,3vw,32px);left:clamp(20px,4.4vw,64px)}
 .alv .ld-foot{position:absolute;left:0;right:0;bottom:clamp(28px,5vw,64px);margin:0 auto;width:100%;max-width:1360px;padding:0 clamp(20px,4.4vw,64px);display:flex;align-items:flex-end;gap:24px}
 .alv .ld-bar{flex:1;height:3px;margin-bottom:12px;background:rgba(var(--l-rgb),.14);overflow:hidden}
 .alv .ld-bar span{display:block;height:100%;background:var(--x);transform-origin:left;transform:scaleX(calc(var(--pct) / 100))}
 .alv .ld-num{min-width:3.2ch;text-align:right;font:600 clamp(44px,5vw,72px)/.9 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;counter-reset:pct var(--pct)}
 .alv .ld-num::after{content:counter(pct) "%"}
 .alv .loader:not(.is-out) ~ main .hero-copy > *{animation-play-state:paused}
-@keyframes ldUp{to{transform:none}}
-@keyframes ldDot{to{transform:scale(1)}}
-@keyframes ldPulse{from{transform:scale(1)}to{transform:scale(.72)}}
-@keyframes ldFade{to{opacity:1}}
+@keyframes ldRep{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes ldShadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.82);opacity:.6}}
+@keyframes ldLift{0%{transform:translateY(0)}35%{transform:translateY(10px)}100%{transform:translateY(-70px)}}
+@keyframes ldShadowLift{to{transform:scaleX(.6);opacity:.25}}
 @keyframes ldFailsafe{to{visibility:hidden;pointer-events:none}}
-@media (max-width:640px){.alv .ld-sub{font-size:15px;letter-spacing:.16em}.alv .ld-foot{gap:16px}}
-@media (prefers-reduced-motion:reduce){.alv .ld-word span,.alv .ld-dot{transform:none}.alv .ld-sub{opacity:1}}
+@media (max-width:640px){.alv .ld-label{display:none}.alv .ld-foot{gap:16px}.alv .ld-brand{font-size:26px}}
+@media (prefers-reduced-motion:reduce){.alv .ld-svg .ld-bb,.alv .ld-svg .ld-shadow{animation:none!important}.alv .ld-svg .pl{transition:opacity 1ms}}
