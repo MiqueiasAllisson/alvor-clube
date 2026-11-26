@@ -28,7 +28,6 @@ export function Hero() {
         <video
           ref={video}
           className="hero-video"
-          src={asset("/video/hero-salao.mp4")}
           poster={asset("/video/hero-poster.jpg")}
           autoPlay
           muted
@@ -37,7 +36,10 @@ export function Hero() {
           preload="metadata"
           onPlay={() => setPausado(false)}
           onPause={() => setPausado(true)}
-        />
+        >
+          <source src={asset("/video/hero-salao-720.mp4")} type="video/mp4" media="(max-width: 768px)" />
+          <source src={asset("/video/hero-salao-1080.mp4")} type="video/mp4" />
+        </video>
         <div className="duo-lo" />
         <div className="hero-scrim" />
       </div>

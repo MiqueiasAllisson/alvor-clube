@@ -30,12 +30,12 @@ test.describe("Alvor Clube", () => {
       [...document.querySelectorAll("img")].filter((i) => !i.complete || i.naturalWidth === 0).map((i) => i.src),
     );
     expect(quebradas).toEqual([]);
-    const video = await page.evaluate(async () => {
-      const v = document.querySelector("video")!;
-      const r = await fetch(v.currentSrc || v.src, { method: "HEAD" });
-      return r.status;
+    const videos = await page.evaluate(async () => {
+      const fontes = [...document.querySelectorAll("video source")].map((s) => (s as HTMLSourceElement).src);
+      return Promise.all(fontes.map(async (u) => (await fetch(u, { method: "HEAD" })).status));
     });
-    expect(video).toBe(200);
+    expect(videos.length).toBe(2);
+    expect(videos.every((s) => s === 200)).toBe(true);
   });
 
   test("modalidades acompanham a rolagem, descendo e subindo", async ({ page, isMobile }) => {
