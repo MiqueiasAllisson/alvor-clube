@@ -308,8 +308,8 @@ body{margin:0}
 .alv .loader.is-out{clip-path:inset(0 0 100% 0);pointer-events:none}
 .alv .ld-center{display:flex;flex-direction:column;align-items:center;transition:transform 700ms var(--prem),opacity 500ms var(--prem)}
 .alv .loader.is-out .ld-center{transform:translateY(-60px);opacity:0}
-.alv .ld-svg{width:clamp(320px,52vw,720px);height:auto;overflow:visible;display:block}
-.alv .ld-svg .bb-bar,.alv .ld-svg .bb-sl{fill:var(--l)}
+.alv .ld-svg{width:clamp(240px,32vw,440px);height:auto;overflow:visible;display:block}
+.alv .ld-svg .bb-bar{fill:var(--l)}.alv .ld-svg .bb-sl{fill:rgba(var(--l-rgb),.55)}
 .alv .ld-svg .bb-col{fill:var(--l)}
 .alv .ld-svg .bb-knurl{fill:var(--a);opacity:.35}
 .alv .ld-svg .c-x{fill:var(--x)}
@@ -317,8 +317,8 @@ body{margin:0}
 .alv .ld-svg .ld-shadow{fill:rgba(var(--l-rgb),.12);transform-box:fill-box;transform-origin:center}
 .alv .ld-svg .ld-bb{transform-box:fill-box;transform-origin:center}
 .alv .ld-svg .pl{transform-box:fill-box;transform-origin:center;opacity:0;transition:transform 520ms cubic-bezier(.34,1.45,.64,1),opacity 260ms var(--prem)}
-.alv .ld-svg .pl-l{transform:translateX(-46px) scaleY(.7)}
-.alv .ld-svg .pl-r{transform:translateX(46px) scaleY(.7)}
+.alv .ld-svg .pl-l{transform:translateX(-36px) scaleY(.7)}
+.alv .ld-svg .pl-r{transform:translateX(36px) scaleY(.7)}
 .alv .ld-brand{position:absolute;display:inline-flex;align-items:center;gap:10px;font:700 30px/1 'Barlow Condensed',sans-serif;letter-spacing:-.01em;color:var(--l)}
 .alv .ld-brand::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--x)}
 .alv .ld-brand small{font:600 17px/1 'Barlow',sans-serif}
@@ -335,9 +335,9 @@ body{margin:0}
 .alv .ld-num{min-width:3.2ch;text-align:right;font:600 clamp(44px,5vw,72px)/.9 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;counter-reset:pct var(--pct)}
 .alv .ld-num::after{content:counter(pct) "%"}
 .alv .loader:not(.is-out) ~ main .hero-copy > *{animation-play-state:paused}
-@keyframes ldRep{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes ldRep{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(-8deg)}}
 @keyframes ldShadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.82);opacity:.6}}
-@keyframes ldLift{0%{transform:translateY(0)}35%{transform:translateY(10px)}100%{transform:translateY(-70px)}}
+@keyframes ldLift{0%{transform:translateY(0) rotate(0)}35%{transform:translateY(10px) rotate(4deg)}100%{transform:translateY(-70px) rotate(0)}}
 @keyframes ldShadowLift{to{transform:scaleX(.6);opacity:.25}}
 @keyframes ldFailsafe{to{visibility:hidden;pointer-events:none}}
 @media (max-width:640px){.alv .ld-label{display:none}.alv .ld-foot{gap:16px}.alv .ld-brand{font-size:26px}}

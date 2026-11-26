@@ -86,24 +86,26 @@ export function Loader() {
         Alvor<small>Clube</small>
       </span>
       <div className="ld-center" aria-hidden="true">
-        <svg className="ld-svg" viewBox="0 0 560 230" aria-hidden="true">
-          <ellipse className="ld-shadow" cx="280" cy="214" rx="210" ry="7" />
+        <svg className="ld-svg" viewBox="0 0 360 200" aria-hidden="true">
+          <ellipse className="ld-shadow" cx="180" cy="188" rx="130" ry="6" />
           <g className="ld-bb">
-            <rect className="bb-bar" x="40" y="104" width="480" height="12" rx="6" />
-            <rect className="bb-sl" x="36" y="101" width="118" height="18" rx="5" />
-            <rect className="bb-sl" x="406" y="101" width="118" height="18" rx="5" />
-            <rect className="pl pl-1 pl-l c-x" x="124" y="25" width="18" height="170" rx="5" />
-            <rect className="pl pl-1 pl-r c-x" x="418" y="25" width="18" height="170" rx="5" />
-            <rect className="pl pl-2 pl-l c-l" x="102" y="35" width="18" height="150" rx="5" />
-            <rect className="pl pl-2 pl-r c-l" x="440" y="35" width="18" height="150" rx="5" />
-            <rect className="pl pl-3 pl-l c-x" x="82" y="48" width="16" height="124" rx="5" />
-            <rect className="pl pl-3 pl-r c-x" x="462" y="48" width="16" height="124" rx="5" />
-            <rect className="pl pl-4 pl-l c-l" x="64" y="60" width="14" height="100" rx="5" />
-            <rect className="pl pl-4 pl-r c-l" x="482" y="60" width="14" height="100" rx="5" />
-            <rect className="bb-col" x="146" y="90" width="10" height="40" rx="3" />
-            <rect className="bb-col" x="404" y="90" width="10" height="40" rx="3" />
-            <rect className="bb-knurl" x="234" y="104" width="26" height="12" rx="0" />
-            <rect className="bb-knurl" x="300" y="104" width="26" height="12" rx="0" />
+            <rect className="bb-sl" x="30" y="93" width="300" height="14" rx="7" />
+            <rect className="bb-bar" x="132" y="91" width="96" height="18" rx="9" />
+            <rect className="bb-knurl" x="146" y="91" width="4" height="18" rx="1" />
+            <rect className="bb-knurl" x="161" y="91" width="4" height="18" rx="1" />
+            <rect className="bb-knurl" x="176" y="91" width="4" height="18" rx="1" />
+            <rect className="bb-knurl" x="191" y="91" width="4" height="18" rx="1" />
+            <rect className="bb-knurl" x="206" y="91" width="4" height="18" rx="1" />
+            <rect className="pl pl-1 pl-l c-x" x="100" y="38" width="20" height="124" rx="5" />
+            <rect className="pl pl-1 pl-r c-x" x="240" y="38" width="20" height="124" rx="5" />
+            <rect className="pl pl-2 pl-l c-l" x="78" y="47" width="20" height="106" rx="5" />
+            <rect className="pl pl-2 pl-r c-l" x="262" y="47" width="20" height="106" rx="5" />
+            <rect className="pl pl-3 pl-l c-x" x="58" y="56" width="18" height="88" rx="5" />
+            <rect className="pl pl-3 pl-r c-x" x="284" y="56" width="18" height="88" rx="5" />
+            <rect className="pl pl-4 pl-l c-l" x="40" y="65" width="16" height="70" rx="5" />
+            <rect className="pl pl-4 pl-r c-l" x="304" y="65" width="16" height="70" rx="5" />
+            <rect className="bb-col" x="122" y="82" width="10" height="36" rx="3" />
+            <rect className="bb-col" x="228" y="82" width="10" height="36" rx="3" />
           </g>
         </svg>
       </div>
