@@ -304,7 +304,7 @@ body{margin:0}
 .alv .btn-ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 2px var(--fg)}
 .alv .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @property --pct{syntax:'<integer>';inherits:true;initial-value:0}
-.alv .loader{--pct:0;position:fixed;inset:0;z-index:100;background:var(--a);color:var(--l);display:flex;align-items:center;justify-content:center;clip-path:inset(0 0 0 0);transition:clip-path 650ms var(--prem);animation:ldFailsafe 0s linear 8s forwards}
+.alv .loader{--pct:0;--p:0;position:fixed;inset:0;z-index:100;background:var(--a);color:var(--l);display:flex;align-items:center;justify-content:center;clip-path:inset(0 0 0 0);transition:clip-path 650ms var(--prem);animation:ldFailsafe 0s linear 8s forwards}
 .alv .loader.is-out{clip-path:inset(0 0 100% 0);pointer-events:none}
 .alv .ld-center{display:flex;flex-direction:column;align-items:center;transition:transform 700ms var(--prem),opacity 500ms var(--prem)}
 .alv .loader.is-out .ld-center{transform:translateY(-60px);opacity:0}
@@ -316,23 +316,23 @@ body{margin:0}
 .alv .ld-svg .c-l{fill:var(--l)}
 .alv .ld-svg .ld-shadow{fill:rgba(var(--l-rgb),.12);transform-box:fill-box;transform-origin:center}
 .alv .ld-svg .ld-bb{transform-box:fill-box;transform-origin:center}
-.alv .ld-svg .pl{transform-box:fill-box;transform-origin:center;opacity:0;transition:transform 380ms cubic-bezier(.34,1.45,.64,1),opacity 200ms var(--prem)}
-.alv .ld-svg .pl-l{transform:translateX(-36px) scaleY(.7)}
-.alv .ld-svg .pl-r{transform:translateX(36px) scaleY(.7)}
+.alv .ld-svg .pl{transform-box:fill-box;transform-origin:center;opacity:var(--t)}
+.alv .ld-svg .pl-l{transform:translateX(calc(-36px * (1 - var(--t)))) scaleY(calc(.7 + .3 * var(--t)))}
+.alv .ld-svg .pl-r{transform:translateX(calc(36px * (1 - var(--t)))) scaleY(calc(.7 + .3 * var(--t)))}
 .alv .ld-brand{position:absolute;display:inline-flex;align-items:center;gap:10px;font:700 30px/1 'Barlow Condensed',sans-serif;letter-spacing:-.01em;color:var(--l)}
 .alv .ld-brand::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--x)}
 .alv .ld-brand small{font:600 17px/1 'Barlow',sans-serif}
 .alv .ld-label{font:700 19px/1 'Barlow',sans-serif;margin-bottom:6px;white-space:nowrap}
-.alv .ld-svg .ld-bb{transform:translateY(calc(var(--pct) * -.6px)) rotate(calc((100 - var(--pct)) * .08deg))}
-.alv .ld-svg .ld-shadow{transform:scaleX(calc(1 - var(--pct) * .004));opacity:calc(1 - var(--pct) * .007)}
-.alv .loader.p1 .pl-1,.alv .loader.p2 .pl-2,.alv .loader.p3 .pl-3,.alv .loader.p4 .pl-4{opacity:1;transform:none}
+.alv .ld-svg .ld-bb{transform:translateY(calc(var(--p) * -.6px)) rotate(calc((100 - var(--p)) * .08deg))}
+.alv .ld-svg .ld-shadow{transform:scaleX(calc(1 - var(--p) * .004));opacity:calc(1 - var(--p) * .007)}
+.alv .ld-svg .pl-1{--t:clamp(0, calc(var(--p) / 25), 1)}.alv .ld-svg .pl-2{--t:clamp(0, calc((var(--p) - 25) / 25), 1)}.alv .ld-svg .pl-3{--t:clamp(0, calc((var(--p) - 50) / 25), 1)}.alv .ld-svg .pl-4{--t:clamp(0, calc((var(--p) - 75) / 25), 1)}
 .alv .ld-brand{top:clamp(22px,3vw,32px);left:clamp(20px,4.4vw,64px)}
 .alv .ld-foot{position:absolute;left:0;right:0;bottom:clamp(28px,5vw,64px);margin:0 auto;width:100%;max-width:1360px;padding:0 clamp(20px,4.4vw,64px);display:flex;align-items:flex-end;gap:24px}
 .alv .ld-bar{flex:1;height:3px;margin-bottom:12px;background:rgba(var(--l-rgb),.14);overflow:hidden}
-.alv .ld-bar span{display:block;height:100%;background:var(--x);transform-origin:left;transform:scaleX(calc(var(--pct) / 100))}
+.alv .ld-bar span{display:block;height:100%;background:var(--x);transform-origin:left;transform:scaleX(calc(var(--p) / 100))}
 .alv .ld-num{min-width:3.2ch;text-align:right;font:600 clamp(44px,5vw,72px)/.9 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;counter-reset:pct var(--pct)}
 .alv .ld-num::after{content:counter(pct) "%"}
 .alv .loader:not(.is-out) ~ main .hero-copy > *{animation-play-state:paused}
 @keyframes ldFailsafe{to{visibility:hidden;pointer-events:none}}
 @media (max-width:640px){.alv .ld-label{display:none}.alv .ld-foot{gap:16px}.alv .ld-brand{font-size:26px}}
-@media (prefers-reduced-motion:reduce){.alv .ld-svg .ld-bb,.alv .ld-svg .ld-shadow{transform:none}.alv .ld-svg .pl{transition:opacity 1ms}}
+@media (prefers-reduced-motion:reduce){.alv .ld-svg .ld-bb,.alv .ld-svg .ld-shadow{transform:none}.alv .ld-svg .pl{--t:1}}

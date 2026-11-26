@@ -47,10 +47,10 @@ export function Loader() {
       atual += (alvo - atual) * (alvo === 100 ? 0.14 : 0.08);
       const pct = Math.min(100, Math.round(atual));
       el.style.setProperty("--pct", String(pct));
-      for (let k = 1; k <= 4; k++) el.classList.toggle(`p${k}`, pct >= k * 25);
+      el.style.setProperty("--p", Math.min(100, atual).toFixed(2));
       if (pct >= 100 && t >= MINIMO && !saiu) {
+        el.style.setProperty("--p", "100");
         saiu = true;
-        el.classList.add("is-lift");
         timers.push(
           window.setTimeout(() => {
             raiz.style.overflow = "";
@@ -76,7 +76,7 @@ export function Loader() {
   return (
     <div
       ref={ref}
-      className={fase === "saindo" ? "loader p1 p2 p3 p4 is-lift is-out" : "loader"}
+      className={fase === "saindo" ? "loader is-out" : "loader"}
       role="status"
       aria-live="polite"
       aria-busy={fase === "carregando"}
